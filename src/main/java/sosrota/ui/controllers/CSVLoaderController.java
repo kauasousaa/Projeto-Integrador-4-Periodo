@@ -2,8 +2,6 @@ package sosrota.ui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -25,9 +23,6 @@ public class CSVLoaderController {
     @FXML
     private TextField conexoesPathField;
 
-    @FXML
-    private TextArea logArea;
-
     private Stage stage;
 
     public void setStage(Stage stage) {
@@ -39,7 +34,6 @@ public class CSVLoaderController {
         File arquivo = selecionarArquivo("Selecionar arquivo de Bairros", "*.csv");
         if (arquivo != null) {
             bairrosPathField.setText(arquivo.getAbsolutePath());
-            adicionarLog("Arquivo de bairros selecionado: " + arquivo.getName());
         }
     }
 
@@ -48,7 +42,6 @@ public class CSVLoaderController {
         File arquivo = selecionarArquivo("Selecionar arquivo de Conexões", "*.csv");
         if (arquivo != null) {
             conexoesPathField.setText(arquivo.getAbsolutePath());
-            adicionarLog("Arquivo de conexões selecionado: " + arquivo.getName());
         }
     }
 
@@ -63,51 +56,10 @@ public class CSVLoaderController {
         }
 
         try {
-            adicionarLog("Iniciando importação completa...");
-            csvLoaderService.carregarTodos(caminhoBairros, caminhoConexoes);
-            adicionarLog("✓ Importação concluída com sucesso!");
+            csvLoaderService.carregarTodos(caminhoBairros, caminhoConexoes, msg -> {});
             mostrarSucesso("Importação concluída", "Os dados foram importados com sucesso!");
         } catch (Exception e) {
-            adicionarLog("✗ Erro: " + e.getMessage());
             mostrarErro("Erro ao importar: " + e.getMessage());
-        }
-    }
-
-    @FXML
-    private void importarBairros() {
-        String caminho = bairrosPathField.getText().trim();
-        if (caminho.isEmpty()) {
-            mostrarErro("Por favor, selecione o arquivo de bairros.");
-            return;
-        }
-
-        try {
-            adicionarLog("Importando bairros...");
-            csvLoaderService.carregarBairros(caminho);
-            adicionarLog("✓ Bairros importados com sucesso!");
-            mostrarSucesso("Importação concluída", "Os bairros foram importados com sucesso!");
-        } catch (Exception e) {
-            adicionarLog("✗ Erro: " + e.getMessage());
-            mostrarErro("Erro ao importar bairros: " + e.getMessage());
-        }
-    }
-
-    @FXML
-    private void importarConexoes() {
-        String caminho = conexoesPathField.getText().trim();
-        if (caminho.isEmpty()) {
-            mostrarErro("Por favor, selecione o arquivo de conexões.");
-            return;
-        }
-
-        try {
-            adicionarLog("Importando conexões...");
-            csvLoaderService.carregarConexoes(caminho);
-            adicionarLog("✓ Conexões importadas com sucesso!");
-            mostrarSucesso("Importação concluída", "As conexões foram importadas com sucesso!");
-        } catch (Exception e) {
-            adicionarLog("✗ Erro: " + e.getMessage());
-            mostrarErro("Erro ao importar conexões: " + e.getMessage());
         }
     }
 
@@ -127,12 +79,6 @@ public class CSVLoaderController {
         return fileChooser.showOpenDialog(stage);
     }
 
-    private void adicionarLog(String mensagem) {
-        if (logArea != null) {
-            logArea.appendText(mensagem + "\n");
-        }
-    }
-
     private void mostrarSucesso(String titulo, String mensagem) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);
@@ -149,4 +95,6 @@ public class CSVLoaderController {
         alert.showAndWait();
     }
 }
+
+
 
