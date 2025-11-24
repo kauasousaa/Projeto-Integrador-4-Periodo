@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sosrota.ui.controllers.MainViewController"
+            stylesheets="@/css/styles.css">
+
+    <top>
+        <MenuBar>
+            <Menu fx:id="menuCadastros" mnemonicParsing="false" text="Cadastros">
+                <MenuItem mnemonicParsing="false" text="Bairros" onAction="#abrirCadastroBairros"/>
+                <MenuItem mnemonicParsing="false" text="Bases" onAction="#abrirCadastroBases"/>
+                <MenuItem mnemonicParsing="false" text="Ambulâncias" onAction="#abrirCadastroAmbulancias"/>
+                <MenuItem mnemonicParsing="false" text="Profissionais" onAction="#abrirCadastroProfissionais"/>
+                <MenuItem mnemonicParsing="false" text="Equipes" onAction="#abrirCadastroEquipes"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Operações">
+                <MenuItem mnemonicParsing="false" text="Ocorrências" onAction="#abrirOcorrencias"/>
+                <MenuItem mnemonicParsing="false" text="Despacho" onAction="#abrirDespacho"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Relatórios">
+                <MenuItem mnemonicParsing="false" text="Histórico de Atendimentos" onAction="#abrirRelatorios"/>
+            </Menu>
+            <Menu fx:id="menuUtilitarios" mnemonicParsing="false" text="Utilitários">
+                <MenuItem mnemonicParsing="false" text="Carregar CSV" onAction="#abrirCarregarCSV"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <VBox spacing="30" alignment="CENTER" style="-fx-background-color: #fafafa;">
+            <padding>
+                <Insets top="50" right="50" bottom="50" left="50"/>
+            </padding>
+            
+            <!-- Título Principal -->
+            <VBox spacing="8" alignment="CENTER">
+                <Label text="SOS-Rota" styleClass="main-title"/>
+                <Label text="Sistema de Gestão e Despacho de Atendimentos de Emergência" styleClass="subtitle"/>
+            </VBox>
+            
+            <Separator prefWidth="600"/>
+            
+            <!-- Dashboard com Cards -->
+            <GridPane hgap="15" vgap="15" alignment="CENTER">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="220" prefWidth="220"/>
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="220" prefWidth="220"/>
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="220" prefWidth="220"/>
+                </columnConstraints>
+                
+                <!-- Card Cadastros -->
+                <VBox fx:id="cardCadastros" styleClass="dashboard-card" GridPane.columnIndex="0" onMouseClicked="#abrirCadastroBairros">
+                    <padding>
+                        <Insets top="30" right="20" bottom="30" left="20"/>
+                    </padding>
+                    <VBox spacing="12" alignment="CENTER">
+                        <Label text="📋" style="-fx-font-size: 40px;"/>
+                        <Label text="Cadastros" styleClass="card-title"/>
+                        <Label text="Bairros, Bases, Ambulâncias, Profissionais e Equipes" 
+                               styleClass="card-description" 
+                               wrapText="true"
+                               textAlignment="CENTER"/>
+                    </VBox>
+                </VBox>
+                
+                <!-- Card Operações -->
+                <VBox styleClass="dashboard-card" GridPane.columnIndex="1" onMouseClicked="#abrirOcorrencias">
+                    <padding>
+                        <Insets top="30" right="20" bottom="30" left="20"/>
+                    </padding>
+                    <VBox spacing="12" alignment="CENTER">
+                        <Label text="🚨" style="-fx-font-size: 40px;"/>
+                        <Label text="Operações" styleClass="card-title"/>
+                        <Label text="Ocorrências e Despacho de Ambulâncias" 
+                               styleClass="card-description" 
+                               wrapText="true"
+                               textAlignment="CENTER"/>
+                    </VBox>
+                </VBox>
+                
+                <!-- Card Relatórios -->
+                <VBox styleClass="dashboard-card" GridPane.columnIndex="2" onMouseClicked="#abrirRelatorios">
+                    <padding>
+                        <Insets top="30" right="20" bottom="30" left="20"/>
+                    </padding>
+                    <VBox spacing="12" alignment="CENTER">
+                        <Label text="📊" style="-fx-font-size: 40px;"/>
+                        <Label text="Relatórios" styleClass="card-title"/>
+                        <Label text="Histórico de Atendimentos e Estatísticas" 
+                               styleClass="card-description" 
+                               wrapText="true"
+                               textAlignment="CENTER"/>
+                    </VBox>
+                </VBox>
+                
+                <!-- Card Utilitários -->
+                <HBox fx:id="cardUtilitarios" styleClass="dashboard-card" GridPane.columnIndex="0" GridPane.columnSpan="3" onMouseClicked="#abrirCarregarCSV">
+                    <padding>
+                        <Insets top="20" right="25" bottom="20" left="25"/>
+                    </padding>
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label text="⚙️" style="-fx-font-size: 32px;"/>
+                        <VBox spacing="4" alignment="CENTER_LEFT">
+                            <Label text="Utilitários" styleClass="card-title"/>
+                            <Label text="Carregar dados em lote através de arquivos CSV" 
+                                   styleClass="card-description"/>
+                        </VBox>
+                    </HBox>
+                </HBox>
+            </GridPane>
+            
+            <Separator prefWidth="600"/>
+            
+            <Label text="Selecione uma opção acima ou use o menu para navegar" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #888888;"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" styleClass="status-bar">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            <Label fx:id="statusLabel" text="Status: Sistema Iniciado ✓" styleClass="status-label"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

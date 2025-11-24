@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sosrota.ui.controllers.DespachoController"
+            prefWidth="1200" prefHeight="750"
+            stylesheets="@/css/styles.css">
+
+    <top>
+        <VBox style="-fx-background-color: #f5f5f5; -fx-padding: 15;">
+            <Label text="Despacho de Ambulâncias" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Selecione uma ocorrência aberta e visualize as ambulâncias sugeridas" style="-fx-font-size: 12px; -fx-text-fill: #666666;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="15" style="-fx-padding: 20;">
+            <!-- Ocorrências Abertas -->
+            <VBox spacing="10" prefWidth="500">
+                <Label text="Ocorrências Abertas" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="ocorrenciasTableView" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="ocorrenciaIdColumn" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="ocorrenciaTipoColumn" text="Tipo" prefWidth="120"/>
+                        <TableColumn fx:id="ocorrenciaGravidadeColumn" text="Gravidade" prefWidth="80"/>
+                        <TableColumn fx:id="ocorrenciaBairroColumn" text="Bairro" prefWidth="150"/>
+                    </columns>
+                </TableView>
+                <Button text="Buscar Sugestões" onAction="#buscarSugestoes" style="-fx-pref-width: 200; -fx-font-size: 14px;"/>
+            </VBox>
+
+            <!-- Ambulâncias Sugeridas -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="Ambulâncias Sugeridas" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="ambulanciasTableView" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="placaColumn" text="Placa" prefWidth="100"/>
+                        <TableColumn fx:id="tipoColumn" text="Tipo" prefWidth="80"/>
+                        <TableColumn fx:id="baseColumn" text="Base" prefWidth="150"/>
+                        <TableColumn fx:id="distanciaColumn" text="Distância (km)" prefWidth="100"/>
+                        <TableColumn fx:id="tempoColumn" text="Tempo (min)" prefWidth="100"/>
+                        <TableColumn fx:id="slaColumn" text="SLA" prefWidth="80"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10">
+                    <Label fx:id="infoLabel" text="Selecione uma ocorrência e clique em 'Buscar Sugestões'" 
+                           style="-fx-text-fill: #666666; -fx-font-size: 12px;" HBox.hgrow="ALWAYS"/>
+                    <Button text="Executar Despacho" onAction="#executarDespacho" 
+                            style="-fx-pref-width: 150; -fx-font-size: 14px; -fx-background-color: #28a745; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 15;">
+            <Button text="Fechar" onAction="#fechar" style="-fx-pref-width: 100;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
+

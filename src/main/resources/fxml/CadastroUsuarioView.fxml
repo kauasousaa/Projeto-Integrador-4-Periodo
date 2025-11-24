@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sosrota.ui.controllers.CadastroUsuarioController"
+            stylesheets="@/css/styles.css"
+            style="-fx-background-color: #f5f5f5;">
+
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 40;">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <Label text="Cadastrar Novo Usuário" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <Separator/>
+
+            <VBox spacing="15" alignment="CENTER" style="-fx-min-width: 350;">
+                <Label text="Login:" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="loginField" promptText="Digite o login" style="-fx-min-width: 300;"/>
+
+                <Label text="Senha:" style="-fx-font-weight: bold;"/>
+                <PasswordField fx:id="senhaField" promptText="Digite a senha" style="-fx-min-width: 300;"/>
+
+                <Label text="Confirmar Senha:" style="-fx-font-weight: bold;"/>
+                <PasswordField fx:id="confirmarSenhaField" promptText="Confirme a senha" style="-fx-min-width: 300;" onAction="#handleCadastrar"/>
+
+                <Label text="Perfil:" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="perfilComboBox" style="-fx-min-width: 300;"/>
+
+                <HBox spacing="10" alignment="CENTER">
+                    <Button text="Cadastrar" onAction="#handleCadastrar" style="-fx-min-width: 150; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;"/>
+                    <Button text="Cancelar" onAction="#handleCancelar" style="-fx-min-width: 150; -fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;"/>
+                </HBox>
+            </VBox>
+
+            <Label fx:id="mensagemLabel" style="-fx-text-fill: #e74c3c; -fx-wrap-text: true;" visible="false"/>
+        </VBox>
+    </center>
+
+</BorderPane>
+

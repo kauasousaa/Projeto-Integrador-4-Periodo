@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sosrota.ui.controllers.BairroController"
+            prefWidth="800" prefHeight="600"
+            stylesheets="@/css/styles.css">
+
+    <top>
+        <VBox style="-fx-background-color: #f5f5f5; -fx-padding: 15;">
+            <Label text="Cadastro de Bairros" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <!-- Formulário -->
+            <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: white; -fx-background-radius: 5;">
+                <Label text="Dados do Bairro" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Separator/>
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="30"/>
+                    </rowConstraints>
+                    <Label text="Nome:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="nomeField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                </GridPane>
+                <HBox spacing="10" style="-fx-padding: 10 0 0 0;">
+                    <Button text="Novo" onAction="#novo" style="-fx-pref-width: 80;"/>
+                    <Button text="Salvar" onAction="#salvar" style="-fx-pref-width: 80;"/>
+                    <Button text="Editar" onAction="#editar" style="-fx-pref-width: 80;"/>
+                    <Button text="Excluir" onAction="#excluir" style="-fx-pref-width: 80;"/>
+                    <Button text="Cancelar" onAction="#cancelar" style="-fx-pref-width: 80;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Lista -->
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <Label text="Bairros Cadastrados" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="idColumn" text="ID" prefWidth="80"/>
+                        <TableColumn fx:id="nomeColumn" text="Nome" prefWidth="300"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 15;">
+            <Button text="Fechar" onAction="#fechar" style="-fx-pref-width: 100;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
+

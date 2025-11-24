@@ -1,0 +1,90 @@
+/* Estilo Geral */
+.root {
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Menu Bar */
+.menu-bar {
+    -fx-background-color: #1e3a5f;
+}
+
+.menu-bar .menu .label {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+}
+
+.menu-bar .menu:hover {
+    -fx-background-color: #2a4f7a;
+}
+
+.menu-bar .menu-item .label {
+    -fx-text-fill: #333333;
+}
+
+.menu-bar .menu-item:hover {
+    -fx-background-color: #e3f2fd;
+}
+
+/* Título Principal */
+.main-title {
+    -fx-font-size: 42px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #c62828;
+}
+
+.subtitle {
+    -fx-font-size: 16px;
+    -fx-text-fill: #666666;
+}
+
+/* Cards */
+.dashboard-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+}
+
+.dashboard-card:hover {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #1976d2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+.card-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.card-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: #666666;
+}
+
+/* Status Bar */
+.status-bar {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1 0 0 0;
+}
+
+.status-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #2e7d32;
+    -fx-font-weight: bold;
+}
+
+/* Separator */
+.separator {
+    -fx-padding: 15 0;
+}
+
+/* Welcome Section */
+.welcome-section {
+    -fx-background-color: #ffffff;
+}
+

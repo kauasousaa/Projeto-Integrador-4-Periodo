@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sosrota.ui.controllers.EquipeController"
+            prefWidth="1000" prefHeight="700"
+            stylesheets="@/css/styles.css">
+
+    <top>
+        <VBox style="-fx-background-color: #f5f5f5; -fx-padding: 15;">
+            <Label text="Cadastro de Equipes" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="15" style="-fx-padding: 20;">
+            <!-- Formulário -->
+            <VBox spacing="10" prefWidth="400" style="-fx-padding: 15; -fx-background-color: white; -fx-background-radius: 5;">
+                <Label text="Dados da Equipe" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Separator/>
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="30"/>
+                        <RowConstraints minHeight="30"/>
+                    </rowConstraints>
+                    <Label text="Descrição:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="descricaoField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <Label text="Ambulância:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <ComboBox fx:id="ambulanciaComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                </GridPane>
+                <Separator style="-fx-padding: 10 0;"/>
+                <Label text="Profissionais da Equipe" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <ListView fx:id="profissionaisListView" prefHeight="200" style="-fx-border-color: #ccc;"/>
+                <HBox spacing="10">
+                    <ComboBox fx:id="profissionalComboBox" HBox.hgrow="ALWAYS"/>
+                    <Button text="Adicionar" onAction="#adicionarProfissional" style="-fx-pref-width: 100;"/>
+                    <Button text="Remover" onAction="#removerProfissional" style="-fx-pref-width: 100;"/>
+                </HBox>
+                <HBox spacing="10" style="-fx-padding: 10 0 0 0;">
+                    <Button text="Novo" onAction="#novo" style="-fx-pref-width: 80;"/>
+                    <Button text="Salvar" onAction="#salvar" style="-fx-pref-width: 80;"/>
+                    <Button text="Editar" onAction="#editar" style="-fx-pref-width: 80;"/>
+                    <Button text="Excluir" onAction="#excluir" style="-fx-pref-width: 80;"/>
+                    <Button text="Cancelar" onAction="#cancelar" style="-fx-pref-width: 80;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Lista -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="Equipes Cadastradas" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                        <TableColumn fx:id="descricaoColumn" text="Descrição" prefWidth="200"/>
+                        <TableColumn fx:id="ambulanciaIdColumn" text="Ambulância ID" prefWidth="120"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 15;">
+            <Button text="Fechar" onAction="#fechar" style="-fx-pref-width: 100;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
+

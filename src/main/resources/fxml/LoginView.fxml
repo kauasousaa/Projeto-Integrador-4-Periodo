@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sosrota.ui.controllers.LoginController"
+            stylesheets="@/css/styles.css"
+            style="-fx-background-color: #f5f5f5;">
+
+    <center>
+        <VBox alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30;">
+            <padding>
+                <Insets top="30" right="40" bottom="30" left="40"/>
+            </padding>
+
+            <Label text="SOS-Rota" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Sistema de Gestão de Atendimentos de Emergência" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+
+            <Separator/>
+
+            <VBox spacing="12" alignment="CENTER" style="-fx-min-width: 300;">
+                <Label text="Login:" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="loginField" promptText="Digite seu login" style="-fx-min-width: 250;"/>
+
+                <Label text="Senha:" style="-fx-font-weight: bold;"/>
+                <PasswordField fx:id="senhaField" promptText="Digite sua senha" style="-fx-min-width: 250;" onAction="#handleLogin"/>
+
+                <Button text="Entrar" onAction="#handleLogin" style="-fx-min-width: 250; -fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;"/>
+            </VBox>
+            
+            <Separator style="-fx-min-width: 300; -fx-padding: 5 0 5 0;"/>
+            
+            <Button text="Cadastrar Usuário" onAction="#abrirCadastroUsuario" style="-fx-min-width: 250; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;"/>
+
+            <Label fx:id="mensagemLabel" style="-fx-text-fill: #e74c3c; -fx-wrap-text: true;" visible="false"/>
+        </VBox>
+    </center>
+
+</BorderPane>
+

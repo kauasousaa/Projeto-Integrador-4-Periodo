@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sosrota.ui.controllers.CSVLoaderController"
+            prefWidth="600" prefHeight="400"
+            stylesheets="@/css/styles.css">
+
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 20;">
+            <Label text="Importar Dados CSV" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Selecione os arquivos CSV para importar bairros e conexões" style="-fx-font-size: 12px; -fx-text-fill: #666666;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+            <!-- Arquivo de Bairros -->
+            <VBox spacing="8">
+                <Label text="Arquivo de Bairros (bairros.csv):" style="-fx-font-weight: bold;"/>
+                <HBox spacing="10">
+                    <TextField fx:id="bairrosPathField" prefWidth="400" editable="false"/>
+                    <Button text="Selecionar..." onAction="#selecionarBairros"/>
+                </HBox>
+            </VBox>
+
+            <!-- Arquivo de Conexões -->
+            <VBox spacing="8">
+                <Label text="Arquivo de Conexões (ruas_conexoes.csv):" style="-fx-font-weight: bold;"/>
+                <HBox spacing="10">
+                    <TextField fx:id="conexoesPathField" prefWidth="400" editable="false"/>
+                    <Button text="Selecionar..." onAction="#selecionarConexoes"/>
+                </HBox>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Botões de ação -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Importar Tudo" onAction="#importarTudo" style="-fx-font-size: 14px; -fx-pref-width: 150;"/>
+                <Button text="Importar Apenas Bairros" onAction="#importarBairros" style="-fx-font-size: 14px; -fx-pref-width: 150;"/>
+                <Button text="Importar Apenas Conexões" onAction="#importarConexoes" style="-fx-font-size: 14px; -fx-pref-width: 150;"/>
+            </HBox>
+
+            <!-- Área de log -->
+            <VBox spacing="8">
+                <Label text="Log de Importação:" style="-fx-font-weight: bold;"/>
+                <TextArea fx:id="logArea" prefHeight="150" editable="false" wrapText="true"
+                          style="-fx-font-family: 'Courier New'; -fx-font-size: 11px;"/>
+            </VBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 15;">
+            <Button text="Fechar" onAction="#fechar" style="-fx-pref-width: 100;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
+

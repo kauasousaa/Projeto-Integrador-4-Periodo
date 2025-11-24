@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sosrota.ui.controllers.HistoricoController"
+            prefWidth="1200" prefHeight="750"
+            stylesheets="@/css/styles.css">
+
+    <top>
+        <VBox style="-fx-background-color: #f5f5f5; -fx-padding: 15;">
+            <Label text="Histórico de Atendimentos e Relatórios" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane>
+            <!-- Aba 1: Histórico de Atendimentos -->
+            <Tab text="Histórico de Atendimentos">
+                <VBox spacing="15" style="-fx-padding: 20;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Filtrar por Período:" style="-fx-font-weight: bold;"/>
+                        <Label text="Data Início:"/>
+                        <DatePicker fx:id="dataInicioPicker"/>
+                        <Label text="Data Fim:"/>
+                        <DatePicker fx:id="dataFimPicker"/>
+                        <Button text="Filtrar" onAction="#filtrarAtendimentos" style="-fx-pref-width: 100;"/>
+                        <Button text="Limpar Filtro" onAction="#limparFiltro" style="-fx-pref-width: 100;"/>
+                    </HBox>
+                    <TableView fx:id="atendimentosTableView" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="ocorrenciaIdColumn" text="Ocorrência ID" prefWidth="100"/>
+                            <TableColumn fx:id="ambulanciaIdColumn" text="Ambulância ID" prefWidth="100"/>
+                            <TableColumn fx:id="dataHoraDespachoColumn" text="Data/Hora Despacho" prefWidth="150"/>
+                            <TableColumn fx:id="dataHoraChegadaColumn" text="Data/Hora Chegada" prefWidth="150"/>
+                            <TableColumn fx:id="distanciaColumn" text="Distância (km)" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- Aba 2: Consulta 1 - Ambulâncias Mais Utilizadas -->
+            <Tab text="Ambulâncias Mais Utilizadas">
+                <VBox spacing="15" style="-fx-padding: 20;">
+                    <Label text="Top 10 Ambulâncias Mais Utilizadas" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <Button text="Atualizar Consulta" onAction="#consultarAmbulanciasMaisUtilizadas" style="-fx-pref-width: 150;"/>
+                    <TableView fx:id="ambulanciasMaisUtilizadasTableView" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="posicaoColumn" text="Posição" prefWidth="80"/>
+                            <TableColumn fx:id="ambulanciaIdColumn2" text="Ambulância ID" prefWidth="120"/>
+                            <TableColumn fx:id="placaColumn" text="Placa" prefWidth="100"/>
+                            <TableColumn fx:id="totalAtendimentosColumn" text="Total de Atendimentos" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- Aba 3: Consulta 2 - Ocorrências por Gravidade e Período -->
+            <Tab text="Ocorrências por Gravidade">
+                <VBox spacing="15" style="-fx-padding: 20;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Filtrar por Período:" style="-fx-font-weight: bold;"/>
+                        <Label text="Data Início:"/>
+                        <DatePicker fx:id="dataInicioGravidadePicker"/>
+                        <Label text="Data Fim:"/>
+                        <DatePicker fx:id="dataFimGravidadePicker"/>
+                        <Button text="Atualizar Consulta" onAction="#consultarOcorrenciasPorGravidade" style="-fx-pref-width: 150;"/>
+                    </HBox>
+                    <TableView fx:id="ocorrenciasPorGravidadeTableView" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="gravidadeColumn" text="Gravidade" prefWidth="120"/>
+                            <TableColumn fx:id="totalOcorrenciasColumn" text="Total de Ocorrências" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 15;">
+            <Button text="Fechar" onAction="#fechar" style="-fx-pref-width: 100;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
+
