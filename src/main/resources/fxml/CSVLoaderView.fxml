@@ -7,57 +7,70 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sosrota.ui.controllers.CSVLoaderController"
-            prefWidth="600" prefHeight="400"
-            stylesheets="@/css/styles.css">
+            prefWidth="700" prefHeight="550"
+            stylesheets="@/css/styles.css"
+            style="-fx-background-color: #fafafa;">
 
     <top>
-        <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 20;">
-            <Label text="Importar Dados CSV" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
-            <Label text="Selecione os arquivos CSV para importar bairros e conexões" style="-fx-font-size: 12px; -fx-text-fill: #666666;"/>
+        <VBox spacing="8" style="-fx-background-color: #2c3e50; -fx-padding: 25;">
+            <Label text="Importar Dados CSV" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Selecione os arquivos CSV para importar bairros e conexões" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #ecf0f1;"/>
         </VBox>
     </top>
 
     <center>
-        <VBox spacing="20" style="-fx-padding: 30;">
+        <VBox spacing="25" style="-fx-padding: 35;">
             <!-- Arquivo de Bairros -->
-            <VBox spacing="8">
-                <Label text="Arquivo de Bairros (bairros.csv):" style="-fx-font-weight: bold;"/>
-                <HBox spacing="10">
-                    <TextField fx:id="bairrosPathField" prefWidth="400" editable="false"/>
-                    <Button text="Selecionar..." onAction="#selecionarBairros"/>
+            <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                <Label text="Arquivo de Bairros" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <TextField fx:id="bairrosPathField" prefWidth="450" editable="false" 
+                               style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 4; -fx-padding: 8;"/>
+                    <Button text="Selecionar Arquivo" onAction="#selecionarBairros" 
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20; -fx-background-radius: 4;"/>
                 </HBox>
             </VBox>
 
             <!-- Arquivo de Conexões -->
-            <VBox spacing="8">
-                <Label text="Arquivo de Conexões (ruas_conexoes.csv):" style="-fx-font-weight: bold;"/>
-                <HBox spacing="10">
-                    <TextField fx:id="conexoesPathField" prefWidth="400" editable="false"/>
-                    <Button text="Selecionar..." onAction="#selecionarConexoes"/>
+            <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                <Label text="Arquivo de Conexões" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <TextField fx:id="conexoesPathField" prefWidth="450" editable="false" 
+                               style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 4; -fx-padding: 8;"/>
+                    <Button text="Selecionar Arquivo" onAction="#selecionarConexoes" 
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20; -fx-background-radius: 4;"/>
                 </HBox>
             </VBox>
 
             <Separator/>
 
             <!-- Botões de ação -->
-            <HBox spacing="10" alignment="CENTER">
-                <Button text="Importar Tudo" onAction="#importarTudo" style="-fx-font-size: 14px; -fx-pref-width: 150;"/>
-                <Button text="Importar Apenas Bairros" onAction="#importarBairros" style="-fx-font-size: 14px; -fx-pref-width: 150;"/>
-                <Button text="Importar Apenas Conexões" onAction="#importarConexoes" style="-fx-font-size: 14px; -fx-pref-width: 150;"/>
-            </HBox>
+            <VBox spacing="12" alignment="CENTER">
+                <Label text="Ações de Importação" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
+                <HBox spacing="15" alignment="CENTER">
+                    <Button text="Importar Tudo" onAction="#importarTudo" 
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 10 25; -fx-background-radius: 4; -fx-pref-width: 180;"/>
+                    <Button text="Importar Apenas Bairros" onAction="#importarBairros" 
+                            style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 10 25; -fx-background-radius: 4; -fx-pref-width: 180;"/>
+                    <Button text="Importar Apenas Conexões" onAction="#importarConexoes" 
+                            style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 10 25; -fx-background-radius: 4; -fx-pref-width: 180;"/>
+                </HBox>
+            </VBox>
 
             <!-- Área de log -->
-            <VBox spacing="8">
-                <Label text="Log de Importação:" style="-fx-font-weight: bold;"/>
-                <TextArea fx:id="logArea" prefHeight="150" editable="false" wrapText="true"
-                          style="-fx-font-family: 'Courier New'; -fx-font-size: 11px;"/>
+            <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                <Label text="Log de Importação" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <TextArea fx:id="logArea" prefHeight="140" editable="false" wrapText="true"
+                          style="-fx-font-family: 'Consolas', 'Courier New', monospace; -fx-font-size: 11px; -fx-background-color: #2c3e50; -fx-text-fill: #ecf0f1; -fx-border-color: #34495e; -fx-border-radius: 4; -fx-padding: 10;"/>
             </VBox>
         </VBox>
     </center>
 
     <bottom>
-        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 15;">
-            <Button text="Fechar" onAction="#fechar" style="-fx-pref-width: 100;"/>
+        <HBox spacing="12" alignment="CENTER_RIGHT" style="-fx-background-color: #ecf0f1; -fx-padding: 18;">
+            <Button text="Fechar" onAction="#fechar" 
+                    style="-fx-background-color: #7f8c8d; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 25; -fx-background-radius: 4; -fx-pref-width: 120;"/>
         </HBox>
     </bottom>
 
