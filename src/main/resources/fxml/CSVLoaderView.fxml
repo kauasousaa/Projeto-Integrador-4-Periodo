@@ -45,17 +45,10 @@
 
             <Separator/>
 
-            <!-- Botões de ação -->
+            <!-- Botão de ação -->
             <VBox spacing="12" alignment="CENTER">
-                <Label text="Ações de Importação" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
-                <HBox spacing="15" alignment="CENTER">
-                    <Button text="Importar Tudo" onAction="#importarTudo" 
-                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 10 25; -fx-background-radius: 4; -fx-pref-width: 180;"/>
-                    <Button text="Importar Apenas Bairros" onAction="#importarBairros" 
-                            style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 10 25; -fx-background-radius: 4; -fx-pref-width: 180;"/>
-                    <Button text="Importar Apenas Conexões" onAction="#importarConexoes" 
-                            style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 10 25; -fx-background-radius: 4; -fx-pref-width: 180;"/>
-                </HBox>
+                <Button text="Importar Dados" onAction="#importarTudo" 
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-padding: 12 40; -fx-background-radius: 4; -fx-pref-width: 250;"/>
             </VBox>
 
             <!-- Área de log -->
